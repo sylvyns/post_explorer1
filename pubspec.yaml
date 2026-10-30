@@ -1,0 +1,44 @@
+name: post_explorer
+description: "SRS 8–9 — Post Explorer: посты JSONPlaceholder (Dio + Retrofit + json_serializable + кэш), своя иконка и тесты."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.4.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  dio: ^5.4.0               # HTTP-клиент
+  retrofit: ^4.1.0          # аннотации для описания API
+  json_annotation: ^4.8.1   # аннотации @JsonSerializable
+  provider: ^6.1.1          # управление состоянием
+  shared_preferences: ^2.2.2 # локальный кэш
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: '>=3.0.0 <7.0.0'
+  build_runner: ^2.4.8                      # запускает генераторы кода
+  retrofit_generator: '>=8.1.0 <11.0.0'     # генерирует post_api.g.dart
+  json_serializable: ^6.7.1                 # генерирует *.g.dart для моделей
+  flutter_launcher_icons: ^0.14.4           # СРС 9: генерирует иконки приложения
+
+flutter:
+  uses-material-design: true
+
+# СРС 9 — собственная иконка приложения.
+# Генерация: dart run flutter_launcher_icons
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/app_icon.png"
+  min_sdk_android: 21
+  # Adaptive Icon (Android 8+): фон и рисунок отдельными слоями,
+  # лаунчер сам обрезает их кругом / скруглённым квадратом.
+  adaptive_icon_background: "assets/icon/app_icon_background.png"
+  adaptive_icon_foreground: "assets/icon/app_icon_foreground.png"
+  # Тематический значок Android 13+ (перекрашивается под обои).
+  adaptive_icon_monochrome: "assets/icon/app_icon_monochrome.png"
+  # App Store не принимает иконки с прозрачностью.
+  remove_alpha_ios: true

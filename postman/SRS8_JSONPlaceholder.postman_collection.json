@@ -1,0 +1,57 @@
+{
+  "info": {
+    "name": "SRS 8 — JSONPlaceholder",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://jsonplaceholder.typicode.com" }
+  ],
+  "item": [
+    {
+      "name": "1. GET posts (page 1, limit 10)",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/posts?_page=1&_limit=10"
+      }
+    },
+    {
+      "name": "2. GET post by id",
+      "request": { "method": "GET", "url": "{{baseUrl}}/posts/1" }
+    },
+    {
+      "name": "3. GET posts by user",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/posts?userId=2&_page=1&_limit=10"
+      }
+    },
+    {
+      "name": "4. GET comments of post",
+      "request": { "method": "GET", "url": "{{baseUrl}}/posts/1/comments" }
+    },
+    {
+      "name": "5. POST create post",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Мой первый пост\",\n  \"body\": \"Текст моего первого поста\",\n  \"userId\": 1\n}"
+        },
+        "url": "{{baseUrl}}/posts"
+      }
+    },
+    {
+      "name": "Extra: GET users",
+      "request": { "method": "GET", "url": "{{baseUrl}}/users" }
+    },
+    {
+      "name": "Extra: GET user by id",
+      "request": { "method": "GET", "url": "{{baseUrl}}/users/1" }
+    },
+    {
+      "name": "Error example: GET post 9999 (404)",
+      "request": { "method": "GET", "url": "{{baseUrl}}/posts/9999" }
+    }
+  ]
+}
